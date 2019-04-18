@@ -1,3 +1,5 @@
+package app.util;
+
 public class Chart {
     static private Item[] items = new Item[0];
     static private int[] quantities = new int[0];
@@ -13,12 +15,12 @@ public class Chart {
             temp1[i]=items[i];
             temp2[i]=quantities[i];
         }
-        temp1[temp1.length]=item;
-        temp2[temp1.length]=1;
+        temp1[temp1.length-1]=item;
+        temp2[temp1.length-1]=1;
         items=temp1;
         quantities=temp2;
     }
-    static public void remove_item(Item item) throws ItemNotFoundException{
+    static public void remove_item(Item item) throws ItemNotFoundException {
         for (int i = 0; i < items.length; i++) if (items[i].equals(item)){
             if (quantities[i] > 1) {
                 quantities[i]--;

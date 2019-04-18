@@ -1,8 +1,10 @@
+package app.util;
+
 public class Item{
         private final int price;
         private final String  Name;
         private final String[] category;
-        Item(int price, String Name, String[] category){
+        public Item(int price, String Name, String[] category){
             this.price = price;
             this.Name = Name;
             this.category = category;
@@ -19,7 +21,15 @@ public class Item{
         public boolean equals(Item item){
             if (item == this) return true;
             if (price != item.price) return false;
-            if (Name.equals(item)) return true;
+            if (Name.equals(item.Name)) return true;
             return false;
+        }
+
+        @Override
+        public String toString(){
+            String part_1 = "Item: " + Name + " price: " + price/100 + "." + price%100 + " Categories:";
+            String part_2 = new String();
+            for (int i = 0; i<category.length; i++) part_2 = part_2 + " " + (i+1) + ") " + category[i];
+            return  part_1 + part_2;
         }
 }

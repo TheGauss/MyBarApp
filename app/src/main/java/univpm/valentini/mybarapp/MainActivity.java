@@ -1,6 +1,7 @@
 package univpm.valentini.mybarapp;
 
 import android.os.StrictMode;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,9 @@ import java.io.InputStream;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import app.util.Chart;
+import app.util.Item;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v){
-        HttpsURLConnection connect = null;
+        /*HttpsURLConnection connect = null;
         try{
             URL url = new URL("https://mybarapp.altervista.org/mailtest.php");
             Log.d("Connection", "Created URL");
@@ -44,6 +48,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         finally {
             if(connect!=null)connect.disconnect();
-        }
+        }*/
+        String[] a = {"caffe", "colazione"};
+        Log.d("Test", "Crated string array");
+        Item b = new Item(100, "Caffe macchiato", a);
+        Log.d("Test", "Created Item");
+        Chart.add_item(b);
+        Toast.makeText(this, Chart.getItem(0).toString(), Toast.LENGTH_LONG).show();
+        Snackbar.make(v, "Quantity of this item= " + Chart.getItemQuantity(0)+" This is the item no. = " + Chart.getItemsNumber(), Snackbar.LENGTH_LONG).show();
+
     }
 }
