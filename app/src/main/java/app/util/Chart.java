@@ -15,8 +15,8 @@ public class Chart {
             temp1[i]=items[i];
             temp2[i]=quantities[i];
         }
-        temp1[temp1.length-1]=item;
-        temp2[temp1.length-1]=1;
+        temp1[items.length]=item;
+        temp2[items.length]=1;
         items=temp1;
         quantities=temp2;
     }

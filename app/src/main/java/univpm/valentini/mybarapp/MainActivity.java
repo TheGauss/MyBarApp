@@ -1,33 +1,31 @@
 package univpm.valentini.mybarapp;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import app.util.Chart;
 import app.util.Item;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button button;
+    Button button, button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
+        button2 = findViewById(R.id.button2);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         button.setOnClickListener(this);
+        button2.setOnClickListener(this);
     }
 
     @Override
@@ -49,10 +47,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         finally {
             if(connect!=null)connect.disconnect();
         }*/
+        if (v.getId()==R.id.button2){
+            Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+            Log.d("Intent", "Intent set");
+            startActivity(intent);
+            return;
+        }
         String[] a = {"caffe", "colazione"};
         Log.d("Test", "Crated string array");
-        Item b = new Item(100, "Caffe macchiato", a);
-        Log.d("Test", "Created Item");
+        Item b = new Item(120, "Caffe macchiato", a);
         Chart.add_item(b);
         Toast.makeText(this, Chart.getItem(0).toString(), Toast.LENGTH_LONG).show();
         Snackbar.make(v, "Quantity of this item= " + Chart.getItemQuantity(0)+" This is the item no. = " + Chart.getItemsNumber(), Snackbar.LENGTH_LONG).show();
