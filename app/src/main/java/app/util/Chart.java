@@ -2,6 +2,8 @@ package app.util;
 
 import android.util.Log;
 
+import org.json.JSONArray;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.OutputStream;
@@ -77,7 +79,7 @@ public class Chart {
             Log.d("Connection", "Set request method");
             OutputStream out = new BufferedOutputStream(connect.getOutputStream());
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-            writer.write("a");
+            writer.write(chartParser());
             writer.flush();
             writer.close();
             out.close();
@@ -88,5 +90,14 @@ public class Chart {
         finally{
             if(connect!=null) connect.disconnect();
         }
+    }
+    public static String chartParser(){
+        JSONArray name = new JSONArray();
+        JSONArray quants = new JSONArray();
+        for (int i = 0; i < items.length; i++){
+            name.put(items[i].getName());
+            quants.put(quantities[i]);
+        }
+        return name.toString() + " " + quants.toString();
     }
 }

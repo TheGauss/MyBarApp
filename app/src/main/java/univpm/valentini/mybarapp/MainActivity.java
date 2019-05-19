@@ -30,23 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v){
-        /*HttpsURLConnection connect = null;
-        try{
-            URL url = new URL("https://mybarapp.altervista.org/mailtest.php");
-            Log.d("Connection", "Created URL");
-            connect = (HttpsURLConnection) url.openConnection();
-            Log.d("Connection", "Opened Connection");
-            connect.setRequestMethod("GET");
-            Log.d("Connection", "Set request method");
-            InputStream input = connect.getInputStream();
-            Toast.makeText(this, "Communication done", Toast.LENGTH_SHORT).show();
-        }
-        catch (Exception e){
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
-        }
-        finally {
-            if(connect!=null)connect.disconnect();
-        }*/
         if (v.getId()==R.id.button2){
             Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
             Log.d("Intent", "Intent set");
