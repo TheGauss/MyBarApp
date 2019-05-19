@@ -1,5 +1,15 @@
 package app.util;
 
+import android.util.Log;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
 public class Chart {
     static private Item[] items = new Item[0];
     static private int[] quantities = new int[0];
@@ -53,5 +63,30 @@ public class Chart {
     static public Item getItem(int a){
         Item returned = items[a];
         return returned;
+    }
+    static public void sendChart() throws Exception {
+        HttpsURLConnection connect = null;
+        try{
+            URL url = new URL("https://mybarapp.altervista.org/orderresolver.php");
+            Log.d("Connection", "Created URL");
+            connect = (HttpsURLConnection) url.openConnection();
+            Log.d("Connection", "Opened Connection");
+            connect.setRequestMethod("POST");
+            connect.setDoInput(false);
+            connect.setDoOutput(true);
+            Log.d("Connection", "Set request method");
+            OutputStream out = new BufferedOutputStream(connect.getOutputStream());
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+            writer.write("a");
+            writer.flush();
+            writer.close();
+            out.close();
+        }
+        catch (Exception e){
+            throw new Exception();
+        }
+        finally{
+            if(connect!=null) connect.disconnect();
+        }
     }
 }
