@@ -110,7 +110,7 @@ public class Chart {
         try {
             a.put("Names", name);
             a.put("Quantities", quants);
-            a.put("Mail", "s10707@studnti.univpm.it");
+            a.put("Mail", "s1079707@studnti.univpm.it");
             Log.v("JSON", "Created  JSON: " + a.toString());
         }
         catch (JSONException e){
