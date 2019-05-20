@@ -13,13 +13,9 @@ public class All_resources {
     public static void addCategory(Category cat){
         Categories.add(cat);
     }
-    public static void addItem(Item itm, String[] in_cats){ ;
-        Category[] cats = new Category[in_cats.length];
-        for (int i = 0; i < cats.length; i++){
-            cats[i] = new Category(in_cats[i], "");
-        }
+    public static void addItem(Item itm, Category[] cats){ ;
         for (int i = 0; i < cats.length; i++) {
-            for (int u = 0; i < Categories.size(); u++) {
+            for (int u = 0; u < Categories.size(); u++) {
                 if (Categories.get(u).equals(cats[i])) {
                     Categories.get(u).addItem(itm);
                 }
@@ -43,12 +39,23 @@ public class All_resources {
                 All_resources.addCategory(temp2);
             }
             Log.d("JSON_TEST_POST", All_resources.getResources()[0].toString());
-            JSONArray items = obj.getJSONArray("Items");
+            JSONArray items = obj.getJSONArray("items");
             for (int i = 0; i<items.length(); i++){
-
+                JSONObject temp = (JSONObject) items.get(i);
+                Log.d("JSON_PARSE", "Truing to parse: " + temp.toString());
+                categories = temp.getJSONArray("categories");
+                Category[] cats = new Category[categories.length()];
+                for (int u = 0; u<categories.length(); u++){
+                    cats[u] = new Category(categories.getString(u), "");
+                }
+                String[] temp2 =temp.getString("Price").split("\\.");
+                Item a = new Item (Integer.parseInt(temp2[0]+temp2[1]), temp.getString("Name"), temp.getString("Image"));
+                addItem(a, cats);
+                Log.d("JSON_PARSE", "Created item: " + a.toString());
             }
         }
         catch (JSONException e){
+            e.printStackTrace();
             Log.wtf("JSON_PARSE", "Could not find crucial resources in " + obj.toString());
         }
     }

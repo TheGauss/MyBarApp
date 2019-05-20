@@ -3,9 +3,11 @@ package app.util;
 public class Item {
         private final int price;
         private final String  Name;
-        public Item(int price, String Name){
+        private final String Image;
+        public Item(int price, String Name, String Image){
             this.price = price;
             this.Name = Name;
+            this.Image = Image;
         }
         public int getPrice(){
             return price;
@@ -25,6 +27,6 @@ public class Item {
 
         @Override
         public String toString(){
-            return "Item: " + Name + " price: " + price/100 + "." + String.format("%02d", price%100);
+            return "Item: " + Name + " price: " + price/100 + "." + String.format("%02d", price%100) + " Image: " + Image;
         }
 }

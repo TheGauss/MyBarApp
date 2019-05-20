@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         String[] a = {"caffe", "colazione"};
         Log.d("Test", "Crated string array");
-        Item b = new Item(120, "Caffé macchiato");
+        Item b = new Item(120, "Caffé macchiato", "");
         Chart.add_item(b);
         Toast.makeText(this, Chart.getItem(0).toString(), Toast.LENGTH_LONG).show();
         Snackbar.make(v, "Quantity of this item= " + Chart.getItemQuantity(0)+" This is the item no. = " + Chart.getItemsNumber(), Snackbar.LENGTH_LONG).show();
