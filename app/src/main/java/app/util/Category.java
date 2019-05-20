@@ -28,7 +28,7 @@ public class Category {
     public boolean equals(Object obj){
         if (!(obj instanceof Category)) return false;
         Category cat = (Category) obj;
-        if (!(this.Name==cat.Image)) return false;
+        if (!(this.Name==cat.Name)) return false;
         return true;
     }
     @Override
