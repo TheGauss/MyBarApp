@@ -26,7 +26,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v){
         String[] a = {"caffe", "colazione"};
         Log.d("Test", "Crated string array");
-        Item b = new Item(130, "Cappuccino", a);
+        Item b = new Item(130, "Cappuccino");
         Log.d("Test", "Created Item");
         Chart.add_item(b);
         Toast.makeText(this, Chart.getItem(0).toString(), Toast.LENGTH_LONG).show();

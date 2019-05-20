@@ -88,8 +88,6 @@ public class Chart {
             writer.flush();
             writer.close();
             out.close();
-            InputStream in = new BufferedInputStream(connect.getInputStream());
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             Log.d("Connection", "Connection resolved successfully");
         }
         catch (Exception e){
@@ -110,7 +108,7 @@ public class Chart {
         try {
             a.put("Names", name);
             a.put("Quantities", quants);
-            a.put("Mail", "s1079707@studnti.univpm.it");
+            a.put("Mail", "s1079707@studenti.univpm.it");
             Log.v("JSON", "Created  JSON: " + a.toString());
         }
         catch (JSONException e){
