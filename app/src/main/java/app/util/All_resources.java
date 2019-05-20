@@ -3,12 +3,8 @@ package app.util;
 import java.util.ArrayList;
 
 public class All_resources {
-    private static ArrayList<Category> Categories;
-    All_resources(){
-        Categories = new ArrayList<Category>();
-    }
+    private static ArrayList<Category> Categories = new ArrayList<>();
     public static void addCategory(Category cat){
-        if (Categories.contains(cat)) return;
         Categories.add(cat);
     }
     public static void addItem(Item itm, Category[] cats){ ;
@@ -21,6 +17,8 @@ public class All_resources {
         }
     }
     public static Category[] getResources(){
-        return (Category[]) Categories.toArray();
+        Category[] array = new Category[Categories.size()];
+        for (int i = 0; i < array.length; i++) array[i] = Categories.get(i);
+        return array;
     }
 }

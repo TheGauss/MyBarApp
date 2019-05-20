@@ -6,7 +6,7 @@ public class Category {
     private String Name;
     private String Image;
     private ArrayList<Item> Items;
-    Category(String Name, String Image){
+    public Category(String Name, String Image){
         this.Name = Name;
         this.Image = Image;
         Items = new ArrayList<Item>();
@@ -30,5 +30,9 @@ public class Category {
         Category cat = (Category) obj;
         if (!(this.Name==cat.Image)) return false;
         return true;
+    }
+    @Override
+    public String toString(){
+        return "Category(Name: " + Name + " Image: " + Image +")";
     }
 }

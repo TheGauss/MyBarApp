@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import app.util.All_resources;
+import app.util.Category;
 import app.util.Item;
 import android.util.Log;
 
@@ -61,7 +63,16 @@ public class Splash extends Activity {
                 total.append(line).append('\n');
             }
             JSONObject obj = new JSONObject(total.toString());
-            Log.d("JSON", obj.toString());
+            Log.d("JSON DATA", obj.toString());
+            JSONArray categories = obj.getJSONArray("categories");
+            Log.d("JSON_TEST_PRE", categories.toString());
+            for (int i = 0; i<categories.length(); i++){
+                JSONObject temp = (JSONObject) categories.get(i);
+                Log.d("JSON_TEST", temp.toString());
+                Category temp2 = new Category(temp.getString("Name"), temp.getString("Image"));
+                All_resources.addCategory(temp2);
+            }
+            Log.d("JSON_TEST_POST", All_resources.getResources()[0].toString());
         }
         catch (Exception e){
             e.printStackTrace();
