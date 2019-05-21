@@ -22,13 +22,22 @@ public class Category {
         Items.add(item);
     }
     public Item[] getItems(){
-        return (Item[]) Items.toArray();
+
+        Item[] out = new Item[Items.size()];
+        for (int i = 0; i < out.length; i++){
+            out[i] = Items.get(i);
+        }
+        return out;
+    }
+    public Item getItemByID(int ID) throws ItemNotFoundException{
+        if((ID>= 0) && (ID< Items.size()))return Items.get(ID);
+        throw new ItemNotFoundException();
     }
     @Override
     public boolean equals(Object obj){
         if (!(obj instanceof Category)) return false;
         Category cat = (Category) obj;
-        if (!(this.Name==cat.Name)) return false;
+        if (!(this.Name.equals(cat.Name))) return false;
         return true;
     }
     @Override

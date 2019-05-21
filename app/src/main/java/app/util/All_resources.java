@@ -59,4 +59,8 @@ public class All_resources {
             Log.wtf("JSON_PARSE", "Could not find crucial resources in " + obj.toString());
         }
     }
+    public static Category getCategoryByID(int ID) throws ItemNotFoundException{
+        if((ID>= 0) && (ID <=Categories.size())) return Categories.get(ID);
+        else throw new ItemNotFoundException();
+    }
 }

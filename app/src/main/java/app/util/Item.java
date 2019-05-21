@@ -12,6 +12,7 @@ public class Item {
         public int getPrice(){
             return price;
         }
+        public String getImage(){ return Image;}
         public String getName(){
             return Name;
         }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import app.util.All_resources;
 import app.util.Chart;
 import app.util.Item;
 
@@ -36,11 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
             return;
         }
-        String[] a = {"caffe", "colazione"};
-        Log.d("Test", "Crated string array");
-        Item b = new Item(120, "Caffé macchiato", "");
-        Chart.add_item(b);
-        Toast.makeText(this, Chart.getItem(0).toString(), Toast.LENGTH_LONG).show();
-        Snackbar.make(v, "Quantity of this item= " + Chart.getItemQuantity(0)+" This is the item no. = " + Chart.getItemsNumber(), Snackbar.LENGTH_LONG).show();
+        Intent intent = new Intent(getApplicationContext(), Item_Review.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("Category", 0);
+        bundle.putInt("Item", 0);
+        intent.putExtra("Data", bundle);
+        startActivity(intent);
     }
 }
