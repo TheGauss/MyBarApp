@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -31,9 +32,18 @@ public class Item_Review extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item__review);
         Intent intent = getIntent();
-        int category = intent.getBundleExtra("Data").getInt("Category");
-        int item = intent.getBundleExtra("Data").getInt("Item");
+        int category_num = intent.getBundleExtra("Data").getInt("Category");
+        int item_num = intent.getBundleExtra("Data").getInt("Item");
         ImageView image = findViewById(R.id.Itempic);
+        Item item = null;
+        try{
+            item = All_resources.getCategoryByID(category_num).getItemByID(item_num);
+        }
+        catch(ItemNotFoundException e){
+            e.printStackTrace();
+        }
+        TextView item_name = findViewById(R.id.ItemTextView);
+        item_name.setText(item.getName());
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         while (!isNetworkAvailable()){
@@ -41,12 +51,9 @@ public class Item_Review extends AppCompatActivity {
             android.os.SystemClock.sleep(1000);
         }
         try{
-            URL url = new URL(All_resources.getCategoryByID(category).getItemByID(item).getImage());
+            URL url = new URL(item.getImage());
             Bitmap itempic = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             image.setImageBitmap(itempic);
-        }
-        catch(ItemNotFoundException e){
-            e.printStackTrace();
         }
         catch (MalformedURLException e){
             e.printStackTrace();
