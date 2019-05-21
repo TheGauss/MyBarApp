@@ -2,7 +2,10 @@ package univpm.valentini.mybarapp;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.speech.tts.UtteranceProgressListener;
@@ -13,6 +16,7 @@ import android.view.Menu;
 
 import java.net.ConnectException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -22,6 +26,7 @@ import app.util.Category;
 import app.util.Item;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,7 +65,9 @@ public class Splash extends Activity {
     }
     public void downloadAssets(){
         HttpsURLConnection connect = null;
-        boolean Connection_Exception_Happened = false;
+        while(!isNetworkAvailable()) {
+            android.os.SystemClock.sleep(1000);
+        }
         try{
             URL url = new URL("https://mybarapp.altervista.org/assetrequest.php");
             connect = (HttpsURLConnection) url.openConnection();
@@ -74,24 +81,17 @@ public class Splash extends Activity {
             }
             All_resources.parseJSON(new JSONObject(total.toString()));
         }
-        catch (ConnectException e){
-            Snackbar.make(new View(this), "Connection is requires for this app", Snackbar.LENGTH_LONG).show();
-            Connection_Exception_Happened = true;
-        }
         catch (Exception e){
             e.printStackTrace();
         }
         finally{
             if (connect!=null)connect.disconnect();
-            if(Connection_Exception_Happened){
-                try{
-                    wait(10000);
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-                Log.d("ASSET_DOWNLOAD", "No connection was found, trying again");
-                downloadAssets();
-            }
         }
     }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 }
