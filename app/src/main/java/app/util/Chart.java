@@ -25,11 +25,13 @@ public class Chart {
     static private Item[] items = new Item[0];
     static private int[] quantities = new int[0];
 
-    static public void add_item(Item item){
+    static public void add_item(Item item, int copies){
         for (int i = 0; i < items.length; i++) if (items[i].equals(item)){
-            quantities[i]++;
+            quantities[i]+=copies;
+            if (quantities[i]>10) quantities[i]=10;
             return;
         }
+        if (copies >10) copies = 10;
         int[] temp2=new int[items.length+1];
         Item[] temp1=new Item[items.length+1];
         for (int i = 0; i < items.length; i++){
@@ -37,7 +39,7 @@ public class Chart {
             temp2[i]=quantities[i];
         }
         temp1[items.length]=item;
-        temp2[items.length]=1;
+        temp2[items.length]=copies;
         items=temp1;
         quantities=temp2;
     }

@@ -28,7 +28,11 @@ public class Item {
             if (Name.equals(item.Name)) return true;
             return false;
         }
-
+        public String priceToString(int number){
+            int tot = price*number;
+            if (tot%100 == 0) return "" + tot/100+".00";
+            return "" + tot/100 + "." + tot%100;
+        }
         @Override
         public String toString(){
             return "Item: " + Name + " price: " + price/100 + "." + String.format("%02d", price%100) + " Image: " + Image;

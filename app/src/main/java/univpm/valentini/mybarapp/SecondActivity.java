@@ -28,7 +28,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         Log.d("Test", "Crated string array");
         Item b = new Item(130, "Cappuccino", "", "");
         Log.d("Test", "Created Item");
-        Chart.add_item(b);
+        Chart.add_item(b, 1);
         Toast.makeText(this, Chart.getItem(0).toString(), Toast.LENGTH_LONG).show();
         Snackbar.make(v, "Quantity of this item= " + Chart.getItemQuantity(0)+" This is the item no. = " + Chart.getItemsNumber(), Snackbar.LENGTH_LONG).show();
         try{
