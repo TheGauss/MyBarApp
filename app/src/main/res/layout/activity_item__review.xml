@@ -31,4 +31,17 @@
         android:layout_marginEnd="87dp"
         android:layout_marginRight="87dp"
         android:text="Item" />
+
+    <TextView
+        android:id="@+id/ItemDescriptionView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="91dp"
+        app:layout_constraintTop_toTopOf="@id/Itempic"
+        android:layout_marginTop="91dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp" />
 </android.support.constraint.ConstraintLayout>

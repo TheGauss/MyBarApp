@@ -43,7 +43,9 @@ public class Item_Review extends AppCompatActivity {
             e.printStackTrace();
         }
         TextView item_name = findViewById(R.id.ItemTextView);
+        TextView item_desc = finishActivity(R.id.ItemDescriptionView);
         item_name.setText(item.getName());
+        item_desc.setText(item.getDescritpion());
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         while (!isNetworkAvailable()){

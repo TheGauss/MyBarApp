@@ -4,11 +4,14 @@ public class Item {
         private final int price;
         private final String  Name;
         private final String Image;
-        public Item(int price, String Name, String Image){
+        private final String Descritpion;
+        public Item(int price, String Name, String Image, String Description){
             this.price = price;
             this.Name = Name;
             this.Image = Image;
+            this.Descritpion = Description;
         }
+        public String getDescritpion(){return Descritpion;}
         public int getPrice(){
             return price;
         }

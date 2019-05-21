@@ -49,7 +49,7 @@ public class All_resources {
                     cats[u] = new Category(categories.getString(u), "");
                 }
                 String[] temp2 =temp.getString("Price").split("\\.");
-                Item a = new Item (Integer.parseInt(temp2[0]+temp2[1]), temp.getString("Name"), temp.getString("Image"));
+                Item a = new Item (Integer.parseInt(temp2[0]+temp2[1]), temp.getString("Name"), temp.getString("Image"), temp.getString("Description"));
                 addItem(a, cats);
                 Log.d("JSON_PARSE", "Created item: " + a.toString());
             }
