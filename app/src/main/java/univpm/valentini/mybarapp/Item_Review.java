@@ -4,14 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.StrictMode;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +18,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import app.util.All_resources;
-import app.util.Category;
 import app.util.Item;
 import app.util.ItemNotFoundException;
 
@@ -34,7 +30,7 @@ public class Item_Review extends AppCompatActivity {
         Intent intent = getIntent();
         int category_num = intent.getBundleExtra("Data").getInt("Category");
         int item_num = intent.getBundleExtra("Data").getInt("Item");
-        ImageView image = findViewById(R.id.Itempic);
+        ImageView image = findViewById(R.id.ItemPicview);
         Item item = null;
         try{
             item = All_resources.getCategoryByID(category_num).getItemByID(item_num);
@@ -42,8 +38,8 @@ public class Item_Review extends AppCompatActivity {
         catch(ItemNotFoundException e){
             e.printStackTrace();
         }
-        TextView item_name = findViewById(R.id.ItemTextView);
-        TextView item_desc = finishActivity(R.id.ItemDescriptionView);
+        TextView item_name = findViewById(R.id.ItemNameview);
+        TextView item_desc = findViewById(R.id.ItemDescriptionView);
         item_name.setText(item.getName());
         item_desc.setText(item.getDescritpion());
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
