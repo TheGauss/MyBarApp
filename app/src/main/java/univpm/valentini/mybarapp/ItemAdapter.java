@@ -28,7 +28,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         TextView price = (TextView) listItem.findViewById(R.id.ItemPrice_cat);
         image.setImageBitmap(current.getImageBitmap());
         name.setText(current.getName());
-        name.setText(current.priceToString(1));
+        price.setText(current.priceToString(1));
         return listItem;
     }
 }
