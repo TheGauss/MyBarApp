@@ -2,22 +2,16 @@ package univpm.valentini.mybarapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import app.util.All_resources;
 import app.util.Chart;
@@ -59,7 +53,7 @@ public class Item_Review extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this, "You need an internet connection to use this app", Toast.LENGTH_SHORT).show();
             android.os.SystemClock.sleep(1000);
         }
-        Bitmap itempic = item.getImageBitmap();
+        image.setImageBitmap(item.getImageBitmap());
         addbutton = findViewById(R.id.IncreaseButton);
         removebutton = findViewById(R.id.DecreaseButton);
         tochartbutton = findViewById(R.id.AddtoChartButton);
