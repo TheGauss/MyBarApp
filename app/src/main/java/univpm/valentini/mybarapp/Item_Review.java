@@ -59,17 +59,7 @@ public class Item_Review extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this, "You need an internet connection to use this app", Toast.LENGTH_SHORT).show();
             android.os.SystemClock.sleep(1000);
         }
-        try{
-            URL url = new URL(item.getImage());
-            Bitmap itempic = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            image.setImageBitmap(itempic);
-        }
-        catch (MalformedURLException e){
-            e.printStackTrace();
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
+        Bitmap itempic = item.getImageBitmap();
         addbutton = findViewById(R.id.IncreaseButton);
         removebutton = findViewById(R.id.DecreaseButton);
         tochartbutton = findViewById(R.id.AddtoChartButton);

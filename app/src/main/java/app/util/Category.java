@@ -1,5 +1,10 @@
 package app.util;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Category {
@@ -20,6 +25,15 @@ public class Category {
     public void addItem(Item item){
         if (Items.contains(item)) return;
         Items.add(item);
+    }
+    public Bitmap getImageBitmap(){
+        try{
+            URL url = new URL(Image);
+            return BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        }catch(IOException e){
+            e.printStackTrace();
+            return null;
+        }
     }
     public Item[] getItems(){
 
