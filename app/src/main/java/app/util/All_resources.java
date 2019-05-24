@@ -9,11 +9,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class All_resources {
+
     private static ArrayList<Category> Categories = new ArrayList<>();
-    public static void addCategory(Category cat){
-        Categories.add(cat);
-    }
-    public static void addItem(Item itm, Category[] cats){ ;
+    public static void addCategory(Category cat){ if (!Categories.contains(cat))Categories.add(cat); }
+    public static void addItem(Item itm, Category[] cats){
         for (int i = 0; i < cats.length; i++) {
             for (int u = 0; u < Categories.size(); u++) {
                 if (Categories.get(u).equals(cats[i])) {

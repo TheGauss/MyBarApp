@@ -1,20 +1,13 @@
 package app.util;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.URL;
@@ -77,6 +70,15 @@ public class Chart {
         Item returned = items[a];
         return returned;
     }
+    static public int getTotal(){
+        int total = 0;
+        for (int i = 0; i<items.length; i++) total+= total + (items[i].getPrice()*quantities[i]);
+        return total;
+    }
+    static public String getTotalString(){
+        int total = getTotal();
+        return total/100 + "." + total%100;
+    }
     static public void sendChart() throws Exception {
         HttpsURLConnection connect = null;
         try{
@@ -93,6 +95,8 @@ public class Chart {
             writer.flush();
             writer.close();
             out.close();
+            items = new Item[0];
+            quantities = new int[0];
             Log.d("Connection", "Connection resolved successfully");
         }
         catch (Exception e){
