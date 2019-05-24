@@ -23,7 +23,7 @@
         android:layout_marginRight="162dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/TotalView"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:text="TextView"

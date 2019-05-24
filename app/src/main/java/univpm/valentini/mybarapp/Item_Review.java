@@ -7,6 +7,9 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -91,5 +94,17 @@ public class Item_Review extends AppCompatActivity implements View.OnClickListen
                 Toast.makeText(this, "Item added to the chart", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.appmenu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent intent = new Intent(getApplicationContext(), ChartActivity.class);
+        startActivity(intent);
+        return true;
     }
 }

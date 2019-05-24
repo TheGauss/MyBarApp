@@ -14,14 +14,15 @@
     <TextView
         android:id="@+id/ItemName_cat"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/ItemPrice_cat"
         android:layout_width="wrap_content"
-        android:layout_height="9dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center"
         android:text="TextView" />
 </LinearLayout>
