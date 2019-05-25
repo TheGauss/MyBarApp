@@ -66,10 +66,8 @@ public class Chart {
     static public int getItemQuantity(int a){
         return quantities[a];
     }
-    static public Item getItem(int a){
-        Item returned = items[a];
-        return returned;
-    }
+    static public Item[] getItems(){return items;}
+    static public Item getItem(int a){return items[a];}
     static public int getTotal(){
         int total = 0;
         for (int i = 0; i<items.length; i++) total+= total + (items[i].getPrice()*quantities[i]);
@@ -77,6 +75,7 @@ public class Chart {
     }
     static public String getTotalString(){
         int total = getTotal();
+        if(total%100==0) return total/100+".00";
         return total/100 + "." + total%100;
     }
     static public void sendChart() throws Exception {

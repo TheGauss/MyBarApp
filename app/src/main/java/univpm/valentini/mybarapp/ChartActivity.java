@@ -31,7 +31,7 @@ public class ChartActivity extends AppCompatActivity {
         text = findViewById(R.id.TotalView);
         text.setText("Total: €" + Chart.getTotalString());
         chart = findViewById(R.id.ChartView);
-        ChartAdapter adapter = new ChartAdapter(getApplicationContext(), R.layout.layout_chart_list);
+        ChartAdapter adapter = new ChartAdapter(getApplicationContext(), R.layout.layout_chart_list, Chart.getItems());
         chart.setAdapter(adapter);
     }
 
