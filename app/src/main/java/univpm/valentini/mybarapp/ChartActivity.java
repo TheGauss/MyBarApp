@@ -2,7 +2,6 @@ package univpm.valentini.mybarapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,8 +16,8 @@ public class ChartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
-        button = findViewById(R.id.Purchase);
-        button.setOnClickListener(new View.OnClickListener() {
+        //button = findViewById(R.id.Purchase);
+        /*button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try{
@@ -27,9 +26,9 @@ public class ChartActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        });
-        text = findViewById(R.id.TotalView);
-        text.setText("Total: €" + Chart.getTotalString());
+        });*/
+        //text = findViewById(R.id.TotalView);
+        //text.setText("Total: €" + Chart.getTotalString());
         chart = findViewById(R.id.ChartView);
         ChartAdapter adapter = new ChartAdapter(getApplicationContext(), R.layout.layout_chart_list, Chart.getItems());
         chart.setAdapter(adapter);
